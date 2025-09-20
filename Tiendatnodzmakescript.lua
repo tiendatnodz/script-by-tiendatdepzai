@@ -1,10 +1,10 @@
 local _ENV = (getgenv or getrenv or getfenv)()
-local REAL_TIENDATNODZ_VERSION = REAL_TIENDATNODZ_VERSION or _ENV.REAL_TIENDATNODZ_VERSION
+local BETA_VERSION = BETA_VERSION or _ENV.BETA_VERSION
 
 local Scripts = {
 	{
 		PlacesIds = {2753915549, 4442272183, 7449423635},
-		UrlPath = if REAL_TIENDATNODZ_VERSION then "BLOX-FRUITS-REAL-BY-TIENDATNODZ.lua" else "BloxFruits.luau" 
+		UrlPath = if BETA_VERSION then "BLOX-FRUITS-BETA.lua" else "BloxFruits.luau" 
 	},
 	{
 		PlacesIds = {10260193230},
@@ -49,7 +49,7 @@ do
 		
 		local SourceCode = ("loadstring(game:HttpGet('%smain.luau'))(%s)"):format(urls.Repository, SettingsCode)
 		
-		if REAL_TIENDATNODZ_VERSION then
+		if BETA_VERSION then
 			SourceCode = "getgenv().BETA_VERSION=true;" .. SourceCode
 		end
 		
@@ -121,4 +121,4 @@ for _, Script in Scripts do
 	if IsPlace(Script) then
 		return fetcher.load("{Repository}Games/" .. Script.UrlPath)(fetcher, ...)
 	end
-end
+		end
